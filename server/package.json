@@ -1,0 +1,15 @@
+{
+  "name": "MSA",
+  "version": "0.1.0",
+  "description": "A REST server for MSA",
+  "main": "server.js",
+  "author": "Wenjie Gong",
+  "license": "GPL",
+  "engines": {
+    "node": ">0.12"
+  },
+  "dependencies": {
+    "bcrypt": "^0.7.8",
+    "restify": "^3.0.0",
+  }
+}
