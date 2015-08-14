@@ -1,15 +1,18 @@
 {
-  "name": "MSA",
+  "name": "msa",
   "version": "0.1.0",
-  "description": "A REST server for MSA",
+  "private": true,
   "main": "server.js",
   "author": "Wenjie Gong",
-  "license": "GPL",
-  "engines": {
-    "node": ">0.12"
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "node server.js"
   },
   "dependencies": {
-    "bcrypt": "^0.7.8",
-    "restify": "^3.0.0",
-  }
+    "aws-sdk": "*",
+    "bcrypt-nodejs": "0.0.3",
+    "restify": "^3.0.0"
+  },
+  "devDependencies": {},
+  "description": ""
 }
