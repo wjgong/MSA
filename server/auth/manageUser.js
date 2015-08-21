@@ -51,6 +51,7 @@ module.exports = function (server, db, config) {
     return next();
   });
 
+  //POST login form.
   server.post('/api/v1/msa/auth/login', function (req, res, next) {
     var user = req.params;
     if (user.mobile.trim().length == 0 || user.password.trim().length == 0) {
@@ -76,14 +77,19 @@ module.exports = function (server, db, config) {
         console.log('User does not exist: ' + err);
       } else {
         console.log('Find the user in database.');
-        pwdMgr.comparePassword(user.password, data.password, function (err, isPasswordMatch) {
+
+        pwdMgr.comparePassword(user.password, data.Item.password.S, function (err, isPasswordMatch) {
+          if (err) {
+            console.log('Error verifying password: ', + err);
+          }
+
           if (isPasswordMatch) {
             res.writeHead(200, {
               'Content-Type': 'application/json; charset=utf-8'
             });
             //Remove password hash before sending to the client
-            data.password = "";
-            res.end(JSON.stringify(data));
+            user.password = "";
+            res.end(JSON.stringify(user));
           } else {
             res.writeHead(403, {
               'Content-Type': 'application/json; charset=utf-8'

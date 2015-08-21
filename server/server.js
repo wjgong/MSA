@@ -7,6 +7,7 @@ var server = restify.createServer();
 //Read config values from a JSON file.
 var config = fs.readFileSync('./app_config.json', 'utf8');
 config = JSON.parse(config);
+//Add the keys in environment variable, so comment out the below statement.
 //AWS.config.update({accessKeyId: 'AKIAJYJUC4B4BBY6ERHQ', secretAccessKey: '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'});
 
 //Create DynamoDB client and pass in region.
@@ -26,8 +27,8 @@ server.use(function(req, res, next) {
   next();
 });
 
-server.listen(process.env.PORT || 80, function () {
-  console.log("Server started @ ", process.env.PORT || 80);
+server.listen(process.env.PORT || 9804, function () {
+  console.log("Server started @ ", process.env.PORT || 9804);
 });
 
 var manageUsers = require('./auth/manageUser')(server, db, config);
